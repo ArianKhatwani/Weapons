@@ -1,3 +1,4 @@
+
 name: Build plugin
 on: [push, workflow_dispatch]
 
@@ -20,12 +21,11 @@ jobs:
           gradle-version: '8.14'
 
       - name: Build plugin
-        working-directory: UltimateArtifacts
         run: gradle build --no-daemon
 
       - name: Upload JAR
         uses: actions/upload-artifact@v4
         with:
           name: UltimateArtifacts-JAR
-          path: UltimateArtifacts/build/libs/*.jar
+          path: build/libs/*.jar
           if-no-files-found: error
